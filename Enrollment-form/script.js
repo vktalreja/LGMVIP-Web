@@ -1,34 +1,47 @@
-var row = 1;
+var Name = document.getElementById('Name')
+var Email = document.getElementById('Email')
 
-function displayDetails(){
-    var name = document.getElementById("name").value;
-    var age = document.getElementById("age").value;
-    var email = document.getElementById("email").value;
-    var course = document.getElementById("course").value;
-    var branch= document.getElementById("branch").value;
-    var gender = document.getElementById("gender").value;
- 
+var btn = document.getElementById('btn');
+var cards = document.querySelector('.cards');
+var Male = document.getElementById('Male')
+var Female = document.getElementById('Female')
+var html = document.getElementById('html')
+var css = document.getElementById('css')
+var javascript = document.getElementById('javascript')
+var form = document.querySelector('form');
+var selectImage;
 
-    if(!name || !age || !email || !course || !branch ||!gender){
-        alert("Please fill all the boxes!!");
-        return;
+
+var image = function (e) {
+    selectImage = URL.createObjectURL(event.target.files[0]);
+};
+btn.addEventListener('click', function () {
+    let checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    let values = []
+    checkboxes.forEach((checkbox) => {
+        values.push(checkbox.value);
+    });
+
+    if (!Name.value || !Email.value) {
+        alert('Please enter all fields!')
     }
-var display = document.getElementById("display");
+    else {
+        cards.innerHTML += `
+  <div class="card">
+  <div class="card-body">
+  <h4 class="title"> Name: ${Name.value}</h4>
+  <p class="text"> Email: ${Email.value}</p>
+  <p class="text"> Gender: ${Male.checked ? Male.value : Female.checked ? Female.value : 'Others'}</p>
+  
+  
+  <p class="text"> Skills: ${values}</p>
+  </div>
+  <div class="image">
+      <img src='${selectImage}' alt="Image">
+    </div>
+  </div>`
 
-var newRow = display.insertRow(row);
+        alert(' Student Enrolled Successfully ')
 
-var cell1 = newRow.insertCell(0);
-var cell2 = newRow.insertCell(1);
-var cell3 = newRow.insertCell(2);
-var cell4 = newRow.insertCell(3);
-var cell5 = newRow.insertCell(4);
-var cell6 = newRow.insertCell(5);
-
-cell1.innerHTML = name;
-cell2.innerHTML = age;
-cell3.innerHTML = email;
-cell4.innerHTML = course;
-cell5.innerHTML = branch;
-cell6.innerHTML = gender;
-row++;
-}
+    }
+});
