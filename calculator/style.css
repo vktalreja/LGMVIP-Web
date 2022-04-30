@@ -2,10 +2,15 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    background-color: #E4E9FD;
-    background-image: -webkit-linear-gradient(70deg, #A683E3 50%, #E4E9FD 50%);
-    min-height: 600px;
-    font-family: 'helvetica neue';
+    background-color: blueviolet;
+    /* background-image: -webkit-linear-gradient(70deg, #A683E3 50%, #E4E9FD 50%); */
+    /* min-height: 600px; */
+}
+
+.heading{
+    width: 100%;
+    text-align: center;
+    position: absolute;
 }
 
 .main {
@@ -113,6 +118,7 @@ table {
 }
 
 .button {
+    cursor: pointer;
     width: 56px;
     height: 56px;
     font-size: 50px;
